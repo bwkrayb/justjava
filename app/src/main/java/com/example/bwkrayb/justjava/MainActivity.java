@@ -13,8 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.bwkrayb.justjava.R;
-
 import java.util.Locale;
 
 /**

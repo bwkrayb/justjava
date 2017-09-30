@@ -7,6 +7,23 @@
     tools:context="com.example.bwkrayb.justjava.MainActivity">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Toppings"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:textAllCaps="true"/>
+
+    <CheckBox
+        android:layout_marginLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Whipped Cream"
+        android:paddingLeft="24dp"
+        android:textSize="16dp"/>
+
+    <TextView
         android:id="@+id/quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

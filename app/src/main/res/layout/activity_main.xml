@@ -20,23 +20,21 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:paddingTop="16dp"
-            android:hint="Enter your Name!"/>
+            android:hint="@string/name_entry"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Toppings"
+            android:text="@string/toppings"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"
             android:paddingTop="16dp"
-            android:textAllCaps="true"/>
+            style="@style/HeaderTextStyle"/>
 
         <CheckBox
             android:id="@+id/whipped_cream_checkbox"
             android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Whipped Cream"
+            android:text="@string/whipped_cream"
             android:paddingLeft="24dp"
             android:textSize="16dp"/>
 
@@ -45,20 +43,18 @@
             android:layout_marginLeft="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chocolate"
+            android:text="@string/chocolate"
             android:paddingLeft="24dp"
             android:layout_marginTop="16dp"
             android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"
             android:paddingTop="16dp"
-            android:text="Quantity"
-            android:textAllCaps="true" />
+            android:text="@string/quantity"
+            style="@style/HeaderTextStyle"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,13 +91,11 @@
 
         <TextView
             android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:paddingBottom="8dp"
             android:paddingLeft="16dp"
             android:paddingTop="16dp"
-            android:text="Order Summary"
-            android:textAllCaps="true" />
+            android:text="@string/order_summary"
+            style="@style/HeaderTextStyle"/>
 
         <TextView
             android:id="@+id/order_summary_text_view"

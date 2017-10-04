@@ -13,13 +13,15 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
 
-    int quantity = 0;
+    int quantity = 2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,13 @@ public class MainActivity extends AppCompatActivity {
      * This method adds 1 to the quantity
      */
     public void increment(View view) {
-        quantity = quantity + 1;
+        if (quantity < 100) {
+            quantity = quantity + 1;
+        } else {
+            Toast.makeText(getApplicationContext(), "Please order less than 100 coffees...",
+                    Toast.LENGTH_LONG).show();
+        }
+
         displayQuantity(quantity);
     }
 
@@ -39,7 +47,13 @@ public class MainActivity extends AppCompatActivity {
      * This method subtracts 1 from the quantity
      */
     public void decrement(View view) {
-        quantity = quantity - 1;
+        if (quantity > 1) {
+            quantity = quantity - 1;
+        }  else {
+            Toast.makeText(getApplicationContext(), "You must order at least 1 coffee.",
+                    Toast.LENGTH_LONG).show();
+        }
+
         displayQuantity(quantity);
     }
 
@@ -60,15 +74,55 @@ public class MainActivity extends AppCompatActivity {
         String hasName = nameEntered.getText().toString();
 
         // Calculates the price
-        int price = calculatePrice();
+        int price = calculatePrice(hasWhippedCream, hasChocolate);
 
         // Sends these values to the createOrderSummary method
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, hasName);
         displayMessage(priceMessage);
+
+
+        /**
+         * Intent for going to a location on Google maps.
+         */
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        intent.setData(Uri.parse("geo:38.778370, -89.988526"));
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(intent);
+//        }
+
+
+        /**
+         * Intent used to email the order summary.
+         */
+//        Intent intent = new Intent(Intent.ACTION_SENDTO);
+//        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+//        intent.putExtra(Intent.EXTRA_EMAIL, "katrinareed93@gmail.com");
+//        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java Order");
+//        intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(intent);
+//            TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+//            orderSummaryTextView.setText(null);
+//        }
+
     }
 
-    private int calculatePrice() {
-        return quantity * 5;
+    public int calculatePrice(boolean addWhippedCream, boolean addChocolate) {
+        int coffeePrice = 5;
+
+        int toppingPrice = 0;
+
+        if (addWhippedCream) {
+            if (addChocolate) {
+                toppingPrice = 3;
+            } else
+                toppingPrice = 1;
+        } else if (addChocolate) {
+            toppingPrice = 2;
+        } else {
+            toppingPrice = 0;
+        }
+        return quantity * (coffeePrice + toppingPrice);
     }
 
     /**

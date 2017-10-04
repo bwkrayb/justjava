@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -46,12 +47,23 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        // Finds the status of the whipped cream checkbox
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+
+        // Finds the status of the chocolate checkbox
         CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = chocolateCheckBox.isChecked();
+
+        // Finds the value of the name EditText
+        EditText nameEntered = (EditText) findViewById(R.id.name_text_edit);
+        String hasName = nameEntered.getText().toString();
+
+        // Calculates the price
         int price = calculatePrice();
-        String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate);
+
+        // Sends these values to the createOrderSummary method
+        String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, hasName);
         displayMessage(priceMessage);
     }
 
@@ -65,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
      * @param price
      * @return
      */
-    private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate) {
-        String priceMessage = "Name: Kaptain Kunal";
+    private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate, String userName) {
+        String priceMessage = "Name: " + userName;
         priceMessage += "\nAdd whipped cream? " + addWhippedCream;
         priceMessage += "\nAdd chocolate? " + addChocolate;
         priceMessage += "\nQuantity: " + quantity;

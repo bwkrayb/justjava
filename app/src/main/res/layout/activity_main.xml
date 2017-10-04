@@ -12,6 +12,16 @@
         android:orientation="vertical"
         tools:context="com.example.bwkrayb.justjava.MainActivity">
 
+        <EditText
+            android:id="@+id/name_text_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:paddingTop="16dp"
+            android:hint="Enter your Name!"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
